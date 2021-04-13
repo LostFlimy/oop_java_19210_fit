@@ -1,0 +1,9 @@
+PUSH=com.Operations.Push
+POP=com.Operations.Pop
+SQRT=com.Operations.Sqrt
+PRINT=com.Operations.Print
+-=com.Operations.Sub
++=com.Operations.Add
+/=com.Operations.Div
+*=com.Operations.Mul
+DEFINE=com.Operations.Define

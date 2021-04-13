@@ -1,0 +1,7 @@
+PUSH 5.0
+DEFINE a 3.5
+PUSH a
+/
+SQRT
+PRINT
+POP
