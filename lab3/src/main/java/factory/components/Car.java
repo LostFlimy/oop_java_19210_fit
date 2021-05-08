@@ -1,9 +1,9 @@
 package factory.components;
 
 public class Car {
-    private Body body;
-    private Accesory accesory;
-    private Motor motor;
+    public Body body;
+    public Accesory accesory;
+    public Motor motor;
     private int id;
 
     public Car(Body _body, Accesory _accesory, Motor _motor, int _id) {

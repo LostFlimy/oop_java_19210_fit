@@ -1,5 +1,6 @@
 package factory.workers;
 
+import factory.Factory;
 import factory.components.Detail;
 import factory.store.Store;
 
@@ -12,7 +13,9 @@ public abstract class Supplier<T extends Detail> implements Runnable{
 
     @Override
     public void run() {
-        store.setDetail(create());
+        while(true) {
+            store.setDetail(create());
+        }
     }
 }
 

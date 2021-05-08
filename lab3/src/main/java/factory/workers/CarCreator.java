@@ -14,7 +14,7 @@ public class CarCreator implements Runnable{
     private final Store<Body> bodyStore;
     private final Store<Accesory> accesoryStore;
     private final Store<Car> carStore;
-    private static final Object syncObject = new Object();
+    public final Object syncObject = WorkerControl.syncObject;
 
     public CarCreator(Store<Motor> motorStore, Store<Body> bodyStore, Store<Accesory> accesoryStore,
                       Store<Car> carStore) {
@@ -38,7 +38,6 @@ public class CarCreator implements Runnable{
             Body body = bodyStore.getDetail();
             Motor motor = motorStore.getDetail();
             Accesory accesory = accesoryStore.getDetail();
-
             try {
                 TimeUnit.SECONDS.sleep(Factory.timeSet.getTimeForMachine());
             } catch (InterruptedException e) {
@@ -47,7 +46,7 @@ public class CarCreator implements Runnable{
 
             Car car = new Car(body, accesory, motor, (int)(Math.random() * 100));
 
-            //add logger
+            Factory.logger.info("CarCreator " + Thread.currentThread().getId() + " собрал автомобиль: " + car.getID());
 
             carStore.setDetail(car);
         }

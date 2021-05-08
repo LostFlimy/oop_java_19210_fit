@@ -1,38 +1,55 @@
 package factory.store;
 
+import factory.Factory;
+
 import java.util.Stack;
 
 public class Store<T> {
     private Stack<T> listOfDetails;
     private int maxCount;
+    private int countOfCreatedDetails;
 
     public Store(int maximum) {
         listOfDetails = new Stack<T>();
         maxCount = maximum;
+        countOfCreatedDetails = 0;
     }
 
-    synchronized public void setDetail(T newDetail){
-        if(listOfDetails.size() == maxCount) {
+    public synchronized void setDetail(T newDetail){
+        while(listOfDetails.size() >= maxCount) {
             try {
-                wait(); // Ждем освобождения места на складе
-            } catch(InterruptedException ex) {
-                ex.printStackTrace();
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        listOfDetails.add(newDetail);
-        notifyAll(); // Появилась деталь
+        listOfDetails.push(newDetail);
+        notifyAll();
+        countOfCreatedDetails++;
     }
 
-    synchronized public T getDetail() {
-        if(listOfDetails.empty()) {
+    public synchronized T getDetail() {
+        while(listOfDetails.size() == 0) {
             try {
-                wait(); // Ждем если нету деталей
-            } catch(InterruptedException ex) {
-                ex.printStackTrace();
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         T result = listOfDetails.pop();
-        notifyAll(); // Место освободилось
+        notifyAll();
         return result;
+    }
+
+    public synchronized int getSize() {
+        return listOfDetails.size();
+    }
+
+    public synchronized int getMaxSize() {
+        return maxCount;
+    }
+
+    public synchronized int getCountOfCreatedDetails() {
+        return countOfCreatedDetails;
     }
 }

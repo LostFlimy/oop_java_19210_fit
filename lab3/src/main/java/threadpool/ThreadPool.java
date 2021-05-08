@@ -8,6 +8,12 @@ public class ThreadPool implements Executor {
     private final Queue<Runnable> taskQueue = new ConcurrentLinkedQueue<>();
     private volatile boolean isRunning = true;
 
+    public ThreadPool(int countOfThreads) {
+        for(int i = 0; i < countOfThreads; ++i) {
+            new Thread(new TaskWorker()).start();
+        }
+    }
+
     @Override
     public void execute(Runnable command) {
         if(isRunning) {
