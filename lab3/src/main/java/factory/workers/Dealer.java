@@ -5,7 +5,6 @@ import factory.components.Car;
 import factory.store.Store;
 
 import java.util.Queue;
-import java.util.Stack;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
