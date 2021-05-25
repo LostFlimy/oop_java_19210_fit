@@ -4,7 +4,7 @@ import factory.Factory;
 import factory.components.Detail;
 import factory.store.Store;
 
-public abstract class Supplier<T extends Detail> implements Runnable{
+public abstract class Supplier<T extends Detail> implements Runnable {
     private final Store<T> store;
     public abstract T create();
     public Supplier(Store<T> curStore) {

@@ -9,12 +9,11 @@ import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
 public class WorkerControl implements Runnable{
-    private final Queue<Request> requestQueue;
+    public static final Object dealerSyncObj = new Object();
     private final Store<Car> carStore;
     public static final Object syncObject = new Object();
 
-    public WorkerControl(Queue<Request> requestQueue, Store<Car> carStore) {
-        this.requestQueue = requestQueue;
+    public WorkerControl(Store<Car> carStore) {
         this.carStore = carStore;
     }
 
@@ -24,22 +23,22 @@ public class WorkerControl implements Runnable{
                      //и запросов на создание машин, поэтому запросов в очереди не более, чем размер склада
             /* Если машин на складе меньше, чем количество запросов на получение машин, то
                Создаем новые машины*/
-            synchronized (requestQueue) {
+            synchronized (dealerSyncObj) {
                 //Если же запросов больше нету, то засыпаем
-                while (requestQueue.isEmpty()) {
+                while (carStore.getSize() >= carStore.getMaxSize() / 2) {
                     try {
                         Factory.logger.info("WorkerControl {} уснул", Thread.currentThread().getId());
-                        requestQueue.wait();
+                       dealerSyncObj.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if (carStore.getSize() < requestQueue.size()) {
+                if (carStore.getSize() < carStore.getMaxSize() / 2) {
                     synchronized (syncObject) {
                         syncObject.notify();
                     }
                 }
-                requestQueue.notifyAll(); // Если есть необработанные запросы, то после их выполнения пусть все просыпаются
+                dealerSyncObj.notifyAll(); // Если есть необработанные запросы, то после их выполнения пусть все просыпаются
             }
         }
     }

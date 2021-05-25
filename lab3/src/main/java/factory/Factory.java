@@ -70,9 +70,9 @@ public class Factory {
         for(int i = 0; i < countCarCreat; ++i) {
             threadPool.execute(new CarCreator(motorStore, bodyStore, accesoryStore, carStore));
         }
-        threadPool.execute(new WorkerControl(requestQueue, carStore));
+        threadPool.execute(new WorkerControl(carStore));
         for(int i = 0; i < countDealCreat; ++i) {
-            threadPool.execute(new Dealer(requestQueue, carStore));
+            threadPool.execute(new Dealer(carStore));
         }
     }
 }
