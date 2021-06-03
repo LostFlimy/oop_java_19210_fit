@@ -19,10 +19,7 @@ public class WorkerControl implements Runnable{
 
     @Override
     public void run() {
-        while(true) {//Хотим, чтобы машин всегда хватало, поэтому стараемся, чтобы их было столько же, сколько
-                     //и запросов на создание машин, поэтому запросов в очереди не более, чем размер склада
-            /* Если машин на складе меньше, чем количество запросов на получение машин, то
-               Создаем новые машины*/
+        while(true) {
             synchronized (dealerSyncObj) {
                 //Если же запросов больше нету, то засыпаем
                 while (carStore.getSize() >= carStore.getMaxSize() / 2) {
@@ -38,7 +35,6 @@ public class WorkerControl implements Runnable{
                         syncObject.notify();
                     }
                 }
-                dealerSyncObj.notifyAll(); // Если есть необработанные запросы, то после их выполнения пусть все просыпаются
             }
         }
     }

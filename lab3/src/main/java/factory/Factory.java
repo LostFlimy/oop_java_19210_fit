@@ -23,7 +23,6 @@ public class Factory {
     private final Store<Accesory> accesoryStore;
     private final Store<Car> carStore;
     private final ThreadPool threadPool;
-    private final Queue<Request> requestQueue;
 
     public static Logger logger = LoggerFactory.getLogger(Factory.class);
 
@@ -46,7 +45,6 @@ public class Factory {
                     motorStore.getMaxSize(), bodyStore.getMaxSize(),
                     accesoryStore.getMaxSize(), carStore.getMaxSize());
 
-        requestQueue = new ConcurrentLinkedQueue<Request>();
 
         int countAccesorySupp = Integer.parseInt(property.get("AccessorySuppliers").toString());
         int countMotorSupp = Integer.parseInt(property.get("MotorSuppliers").toString());

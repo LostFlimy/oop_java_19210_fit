@@ -53,7 +53,7 @@ public class View extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
 
-        Font font = new Font("MV Boli", Font.BOLD, 20);
+        Font font = new Font("MV Boli", Font.BOLD, 16);
 
         //создаем панели для количества машин, показателей заполненности складов и скорости работы работников
         panelForCountOfCars = new JPanel();
@@ -71,13 +71,14 @@ public class View extends JFrame implements ActionListener {
         panelForCountOfCars.setLayout(null);
 
         //Установим задний фон для каждой панели
-        panelForProgressBars.setBackground(new Color(200, 200, 200));
-        panelForCountOfCars.setBackground(new Color(150, 150,150));
-        panelForSpeedOfWorkers.setBackground(new Color(200, 200, 200));
+        panelForProgressBars.setBackground(new Color(212, 20, 20));
+        panelForCountOfCars.setBackground(new Color(2, 118, 226));
+        panelForSpeedOfWorkers.setBackground(new Color(120, 9, 118));
 
         //Заполним панель количества произведенных машин
         labelForCountOfCars = new JLabel();
         labelForCountOfCars.setBounds(15, 5, 370, 65);
+        labelForCountOfCars.setFont(font);
         labelForCountOfCars.setText("Count of created cars: " + carStoreInfo.getCountOfCreatedDetails());
         panelForCountOfCars.add(labelForCountOfCars);
 
@@ -87,6 +88,11 @@ public class View extends JFrame implements ActionListener {
         panelForAccesory = new JPanel();
         panelForCar = new JPanel();
         panelForMotor = new JPanel();
+
+        panelForBody.setBackground(new Color(234, 6, 6));
+        panelForAccesory.setBackground(new Color(234, 6, 6));
+        panelForCar.setBackground(new Color(234, 6, 6));
+        panelForMotor.setBackground(new Color(234, 6, 6));
 
         //Зададим размеры панелей для каждого из прогрессов
         panelForMotor.setBounds(10, 5, 380, 60);
@@ -112,7 +118,7 @@ public class View extends JFrame implements ActionListener {
         bodyStoreProgress.setFont(font);
 
         //установим цвета для каждого из баров
-        carStoreProgress.setForeground(Color.black);
+        carStoreProgress.setForeground(new Color(0, 0, 0));
         bodyStoreProgress.setForeground(new Color(232, 166, 86));
         motorStoreProgress.setForeground(new Color(58, 181, 199));
         accesoryStoreProgress.setForeground(new Color(217, 75, 153));
@@ -167,10 +173,15 @@ public class View extends JFrame implements ActionListener {
         panelForCarCreator = new JPanel();
 
         panelForTytle.setBounds(10, 10, 380, 40);
+        panelForTytle.setBackground(new Color(120, 9, 118));
         panelForSuppliersMotor.setBounds(10, 50, 380, 40);
+        panelForSuppliersMotor.setBackground(new Color(120, 9, 118));
         panelForSuppliersBody.setBounds(10, 90, 380, 40);
+        panelForSuppliersBody.setBackground(new Color(120, 9, 118));
         panelForSuppliersAccesory.setBounds(10, 130, 380, 40);
+        panelForSuppliersAccesory.setBackground(new Color(120, 9, 118));
         panelForCarCreator.setBounds(10, 170, 380, 40);
+        panelForCarCreator.setBackground(new Color(120, 9, 118));
 
         //Теперь сделаем кнопки и подписи для последней панели связанной со скоростями
         //Сначала делаем подписи
