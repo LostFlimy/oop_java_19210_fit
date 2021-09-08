@@ -1,8 +1,8 @@
-import com.Calculator.Fabric;
-import com.MyExceptions.CommandNotFoundException;
-import com.MyExceptions.FabricException;
-import com.MyExceptions.HaveNotCommandException;
-import com.Operations.Operation;
+import com.calculator.Fabric;
+import com.myexceptions.CommandNotFoundException;
+import com.myexceptions.FabricException;
+import com.myexceptions.HaveNotCommandException;
+import com.operations.Operation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

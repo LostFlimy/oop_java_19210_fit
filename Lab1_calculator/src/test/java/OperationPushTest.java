@@ -1,6 +1,6 @@
-import com.Calculator.Context;
-import com.Calculator.Fabric;
-import com.Operations.Operation;
+import com.calculator.Context;
+import com.calculator.Fabric;
+import com.operations.Operation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

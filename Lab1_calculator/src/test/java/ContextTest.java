@@ -1,5 +1,5 @@
-import com.Calculator.Context;
-import com.MyExceptions.StackIsEmptyException;
+import com.calculator.Context;
+import com.myexceptions.StackIsEmptyException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

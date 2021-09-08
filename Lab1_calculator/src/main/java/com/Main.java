@@ -1,7 +1,7 @@
 package com;
 
-import com.Calculator.Calculator;
-import com.MyExceptions.MyException;
+import com.calculator.Calculator;
+import com.myexceptions.MyException;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

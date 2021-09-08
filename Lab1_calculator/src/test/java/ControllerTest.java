@@ -1,11 +1,11 @@
-import com.Calculator.ArgumentsController;
-import com.Calculator.Context;
-import com.Calculator.Fabric;
-import com.MyExceptions.IncorrectArgumentException;
-import com.MyExceptions.MoreThanNeedException;
-import com.MyExceptions.NotFoundArgumentsException;
-import com.MyExceptions.StackIsEmptyException;
-import com.Operations.Operation;
+import com.calculator.ArgumentsController;
+import com.calculator.Context;
+import com.calculator.Fabric;
+import com.myexceptions.IncorrectArgumentException;
+import com.myexceptions.MoreThanNeedException;
+import com.myexceptions.NotFoundArgumentsException;
+import com.myexceptions.StackIsEmptyException;
+import com.operations.Operation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
