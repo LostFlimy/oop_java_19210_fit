@@ -12,6 +12,8 @@ public class Function {
     private double D;
     private double epsilonD;
     private boolean moreOneExtr;
+    private double extrX;
+    private boolean zeroExtr;
 
     public Function(double a, double b, double c, double epsilonD) {
         this.a = a;
@@ -22,6 +24,12 @@ public class Function {
         D = 4 * a * a - 12 * b;
         if(D < epsilonD) {
             moreOneExtr = false;
+            if(D > -epsilonD) {
+                zeroExtr = false;
+                extrX = (-2 * a) / 6;
+            } else {
+                zeroExtr = true;
+            }
         }
         else {
             moreOneExtr = true;
@@ -47,6 +55,14 @@ public class Function {
 
     public double getMaxX(){
         return maxX;
+    }
+
+    public double getExtrX() {
+        return extrX;
+    }
+
+    public boolean getZeroExtr() {
+        return zeroExtr;
     }
 
     public double getResultForX(double x) {

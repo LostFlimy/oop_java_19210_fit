@@ -2,9 +2,12 @@ import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
-        RequestParser parser = new RequestParser();
-        parser.parse("start work");
-        System.out.println("addr : " + parser.getAddr());
-        System.out.println("operation : " + parser.getOperation());
+        Thread sender = new Thread(new Sender());
+        Thread receiver = new Thread(new Reciever());
+        Thread deleter = new Thread(new Deleter());
+        deleter.setDaemon(true);
+        sender.start();
+        receiver.start();
+        deleter.start();
     }
 }

@@ -1,6 +1,7 @@
 public class RootFinder {
     private final Function func;
     private double[] roots;
+    private int[] countRoot;
     private int countOfRoots;
     private final double epsilon;
 
@@ -11,6 +12,7 @@ public class RootFinder {
         if(!(func.getMoreOneExtr())) {
             System.out.println("This function have one root!");
             roots = new double[1];
+            countRoot = new int[1];
             countOfRoots = 1;
             if(Math.abs(func.getResultForX(0)) < epsilon) {
                 roots[0] = 0;
@@ -21,17 +23,25 @@ public class RootFinder {
             if(func.getResultForX(0) > epsilon) {
                 roots[0] = findFromInf(0, delta);
             }
+            countRoot[0] = 1;
+            if(!(func.getZeroExtr()) && (roots[0] < func.getExtrX() + epsilon) && (roots[0] > func.getExtrX() - epsilon)) {
+                countRoot[0] = 3;
+            }
         } else {
             if(func.getResultForX(func.getMaxX()) < -epsilon) {
                 System.out.println("This function have one root!");
                 countOfRoots = 1;
                 roots = new double[1];
+                countRoot = new int[1];
+                countRoot[0] = 1;
                 roots[0] = findToInf(func.getMinX(), delta);
             }
             if(func.getResultForX(func.getMinX()) > epsilon) {
                 System.out.println("This function have one root!");
                 countOfRoots = 1;
                 roots = new double[1];
+                countRoot = new int[1];
+                countRoot[0] = 1;
                 roots[0] = findFromInf(func.getMaxX(), delta);
             }
             if(Math.abs(func.getResultForX(func.getMinX())) < epsilon) {
@@ -39,12 +49,17 @@ public class RootFinder {
                     System.out.println("This function have one root!");
                     countOfRoots = 1;
                     roots = new double[1];
+                    countRoot = new int[1];
+                    countRoot[0] = 3;
                     roots[0] = (func.getMaxX() + func.getMinX()) / 2;
                 }else{
                     System.out.println("This function have two roots!");
                     countOfRoots = 2;
                     roots = new double[2];
                     roots[0] = func.getMinX();
+                    countRoot = new int[2];
+                    countRoot[0] = 2;
+                    countRoot[1] = 1;
                     roots[1] = findFromInf(func.getMaxX(), delta);
                 }
             }
@@ -53,6 +68,9 @@ public class RootFinder {
                     System.out.println("This function have two roots!");
                     countOfRoots = 2;
                     roots = new double[2];
+                    countRoot = new int[2];
+                    countRoot[0] = 2;
+                    countRoot[1] = 1;
                     roots[0] = func.getMaxX();
                     roots[1] = findToInf(func.getMinX(), delta);
                 }
@@ -61,6 +79,10 @@ public class RootFinder {
                 System.out.println("This function have three roots!");
                 countOfRoots = 3;
                 roots = new double[3];
+                countRoot = new int[3];
+                countRoot[0] = 1;
+                countRoot[1] = 1;
+                countRoot[2] = 1;
                 roots[0] = findToInf(func.getMinX(), delta);
                 System.out.println("First root is " + roots[0]);
                 roots[1] = findOnInterval(func.getMaxX(), func.getMinX());
@@ -73,6 +95,10 @@ public class RootFinder {
 
     public double[] getRoots() {
         return roots;
+    }
+
+    public int[] getCountRoot() {
+        return countRoot;
     }
 
     public int getCountOfRoots() {
