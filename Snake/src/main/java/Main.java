@@ -1,8 +1,7 @@
-import java.awt.*;
-import java.util.ArrayList;
+import app.App;
 
 public class Main {
-    public static void main(String[] argc) {
-        ArrayList<Integer> list;
+    public static void main(String[] args) {
+        new App().go();
     }
 }
