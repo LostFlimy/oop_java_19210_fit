@@ -1,10 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class GameState {
+public class GameState implements Serializable {
     private int state_order;
     private List<Snake> snakes;
     private List<Coord> foods;

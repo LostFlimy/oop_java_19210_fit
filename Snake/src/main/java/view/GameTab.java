@@ -1,16 +1,16 @@
 package view;
 
+import app.App;
 import model.*;
-
-import java.util.List;
-import java.util.Set;
 
 public class GameTab implements Runnable{
     private GameState state;
     private GameFrame frame;
+    private final App app;
 
-    public GameTab(GameState state) {
+    public GameTab(GameState state, App app) {
         this.state = state;
+        this.app = app;
     }
 
     public void changeGameState(GameState newState) {
@@ -19,6 +19,6 @@ public class GameTab implements Runnable{
     }
     @Override
     public void run() {
-        frame = new GameFrame(state);
+        frame = new GameFrame(state, app);
     }
 }

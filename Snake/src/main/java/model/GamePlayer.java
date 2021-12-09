@@ -11,7 +11,9 @@ package model;
 //        required int32 score = 7;       // Число очков, которые набрал игрок
 //        }
 
-public class GamePlayer {
+import java.io.Serializable;
+
+public class GamePlayer implements Serializable {
     private String name;
     private int id;
     private String IP;

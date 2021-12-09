@@ -1,6 +1,8 @@
 package model.message;
 
-public class PingMsg extends Message{
+import java.io.Serializable;
+
+public class PingMsg extends Message implements Serializable {
 
     public PingMsg(long msgSeq) {
         super(msgSeq);

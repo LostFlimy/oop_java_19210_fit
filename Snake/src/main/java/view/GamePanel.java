@@ -1,9 +1,10 @@
 package view;
 
-import controller.GameController;
+import app.App;
 import model.Coord;
 import model.Direction;
 import model.GameState;
+import model.message.SteerMsg;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,14 +17,16 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
     private final int UNIT_SIZE = 20;
-    private final int HEIGHT;
-    private final int WEIGHT;
+    private int HEIGHT;
+    private int WEIGHT;
     private final Random random;
     private GameState state;
     private Timer timer;
+    private final App app;
 
-    public GamePanel(GameState gameState) {
+    public GamePanel(GameState gameState, App app) {
         this.state = gameState;
+        this.app = app;
         random = new Random();
         WEIGHT = gameState.getConfig().getWidth();
         HEIGHT = gameState.getConfig().getHeight();
@@ -39,6 +42,13 @@ public class GamePanel extends JPanel implements ActionListener {
 
     public void changeGameState(GameState newState) {
         state = newState;
+        WEIGHT = newState.getConfig().getWidth();
+        HEIGHT = newState.getConfig().getHeight();
+        this.setPreferredSize(
+                new Dimension(
+                        newState.getConfig().getWidth() * UNIT_SIZE + 350,
+                        newState.getConfig().getHeight() * UNIT_SIZE + 10
+                ));
     }
 
     public void startView() {
@@ -133,6 +143,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent event) {
+        switch (event.getActionCommand()) {
+            case "NEW GAME" : {
+
+            }
+
+        }
         repaint();
     }
 
@@ -140,16 +156,12 @@ public class GamePanel extends JPanel implements ActionListener {
         @Override
         public void keyPressed(KeyEvent event) {
             if (event.getKeyCode() == KeyEvent.VK_W) {
-
             }
             if (event.getKeyCode() == KeyEvent.VK_A) {
-
             }
             if (event.getKeyCode() == KeyEvent.VK_D) {
-
             }
             if (event.getKeyCode() == KeyEvent.VK_S) {
-
             }
             repaint();
         }

@@ -7,7 +7,9 @@ package model;
 //    RIGHT = 4;  // Вправо (в положительном направлении оси x)
 //}
 
-public enum Direction {
+import java.io.Serializable;
+
+public enum Direction implements Serializable {
     UP(1),
     DOWN(2),
     LEFT(3),

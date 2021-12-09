@@ -1,9 +1,9 @@
 package model;
 
-import java.util.List;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Coord {
+public class Coord implements Serializable {
     private int x;
     private int y;
 

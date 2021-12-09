@@ -1,6 +1,8 @@
 package model;
 
-public enum NodeRole {
+import java.io.Serializable;
+
+public enum NodeRole implements Serializable {
     NORMAL(0),
     MASTER(1),
     DEPUTY(2),

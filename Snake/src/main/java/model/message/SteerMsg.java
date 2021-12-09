@@ -2,7 +2,9 @@ package model.message;
 
 import model.Direction;
 
-public class SteerMsg extends Message{
+import java.io.Serializable;
+
+public class SteerMsg extends Message implements Serializable {
     private final Direction direction;
 
     public Direction getDirection() {

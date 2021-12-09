@@ -3,13 +3,14 @@ package model.message;
 import model.GameConfig;
 import model.GamePlayer;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Set;
 
-public class AnnouncementMsg extends Message {
-    private final List<GamePlayer> players;
+public class AnnouncementMsg extends Message implements Serializable {
+    private final Set<GamePlayer> players;
     private final GameConfig config;
 
-    public List<GamePlayer> getPlayers() {
+    public Set<GamePlayer> getPlayers() {
         return players;
     }
 
@@ -17,7 +18,7 @@ public class AnnouncementMsg extends Message {
         return config;
     }
 
-    public AnnouncementMsg(long msgSeq, List<GamePlayer> players, GameConfig config) {
+    public AnnouncementMsg(long msgSeq, Set<GamePlayer> players, GameConfig config) {
         super(msgSeq);
         this.players = players;
         this.config = config;

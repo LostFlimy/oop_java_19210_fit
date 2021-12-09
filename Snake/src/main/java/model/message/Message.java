@@ -1,6 +1,8 @@
 package model.message;
 
-public abstract class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private final long msgSeq;
     private int senderId;
     private int receiverId;
@@ -12,6 +14,10 @@ public abstract class Message {
 
     public int getReceiverId() {
         return receiverId;
+    }
+
+    public Type getType() {
+        return type;
     }
 
     public long getMsgSeq() {
@@ -43,7 +49,7 @@ public abstract class Message {
     //ErrorMsg error = 8;
     //RoleChangeMsg role_change = 9;
 
-    public enum Type {
+    public static enum Type {
         PING(2),
         STEER(3),
         ACK(4),

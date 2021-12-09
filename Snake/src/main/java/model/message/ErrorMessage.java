@@ -1,6 +1,8 @@
 package model.message;
 
-public class ErrorMessage extends Message{
+import java.io.Serializable;
+
+public class ErrorMessage extends Message implements Serializable {
     private String msg;
 
     public ErrorMessage(long msgSeq, String msg) {

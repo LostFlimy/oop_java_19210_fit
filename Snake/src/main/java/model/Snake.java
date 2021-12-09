@@ -15,10 +15,10 @@ package model;
 //        required Direction head_direction = 4; // Направление, в котором повёрнута голова змейки в текущий момент
 //}
 
+import java.io.Serializable;
 import java.util.LinkedList;
-import java.util.List;
 
-public class Snake {
+public class Snake implements Serializable {
     private SnakeStatus state = SnakeStatus.ALIVE;
     private int player_id;
     private LinkedList<Coord> points = new LinkedList<>();

@@ -1,6 +1,8 @@
 package model.message;
 
-public class JoinMessage extends Message{
+import java.io.Serializable;
+
+public class JoinMessage extends Message implements Serializable {
     private String name;
 
     public String getName() {

@@ -1,6 +1,8 @@
 package model;
 
-public enum SnakeStatus {
+import java.io.Serializable;
+
+public enum SnakeStatus implements Serializable {
     ALIVE(0),
     ZOMBIE(1);
 

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -17,6 +16,8 @@ public class App {
     public static volatile boolean running;
     private ExecutorService threadPool;
     private GameState state;
+    private GameTab tab;
+    public static volatile long msgSeq = 0;
 
     public App() {
         try {
@@ -25,22 +26,8 @@ public class App {
             prop.load(reader);
             state = new GameState(
                     0,
-                    List.of(
-                            new Snake.Builder()
-                                    .setState(SnakeStatus.ALIVE)
-                                    .setPlayerId(1)
-                                    .setDirection(Direction.RIGHT)
-                                    .addPoint(new Coord(1, 1))
-                                    .addPoint(new Coord(0,1))
-                                    .build()
-                    ),
-                    List.of(
-                            new Coord(5, 5),
-                            new Coord(6, 6),
-                            new Coord(7, 7),
-                            new Coord(8, 8),
-                            new Coord(9, 9)
-                    ),
+                    new LinkedList<>(),
+                    new LinkedList<>(),
                     new HashSet<>(),
                     new GameConfig(
                             Integer.parseInt(prop.getProperty("width")),
@@ -66,9 +53,18 @@ public class App {
         System.out.println(state.getConfig().getWidth() + " : " + state.getConfig().getHeight());
         threadPool = Executors.newFixedThreadPool(10);
         running = true;
+        tab = new GameTab(state, this);
+    }
+
+    public GameState getState() {
+        return state;
+    }
+
+    public void submitTask(Runnable task) {
+        threadPool.submit(task);
     }
 
     public void go() {
-        threadPool.submit(new GameTab(state));
+        threadPool.submit(tab);
     }
 }

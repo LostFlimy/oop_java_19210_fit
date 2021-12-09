@@ -11,7 +11,9 @@ package model;
 //        optional int32 node_timeout_ms = 8 [default = 800]; // Таймаут, после которого считаем что узел-сосед отпал, в миллисекундах (от 1 до 10000)
 //}
 
-public class GameConfig {
+import java.io.Serializable;
+
+public class GameConfig implements Serializable {
     private int width = 40;
     private int height = 30;
     private int food_static = 1;

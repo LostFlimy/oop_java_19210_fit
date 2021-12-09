@@ -2,7 +2,9 @@ package model.message;
 
 import model.GameState;
 
-public class StateMsg extends Message {
+import java.io.Serializable;
+
+public class StateMsg extends Message implements Serializable {
     private final GameState state;
 
     public GameState getState() {

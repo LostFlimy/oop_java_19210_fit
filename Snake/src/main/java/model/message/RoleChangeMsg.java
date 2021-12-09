@@ -2,7 +2,9 @@ package model.message;
 
 import model.NodeRole;
 
-public class RoleChangeMsg extends Message{
+import java.io.Serializable;
+
+public class RoleChangeMsg extends Message implements Serializable {
     private NodeRole sender;
     private NodeRole receiver;
 
