@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="694.0" prefWidth="943.0" style="-fx-background-color: #9Ab5bc;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowTabController">
+   <children>
+      <AnchorPane layoutY="35.0" prefHeight="658.0" prefWidth="950.0" style="-fx-background-color: #F0F7F0;">
+         <children>
+            <ComboBox fx:id="choiseBox" layoutX="92.0" layoutY="9.0" prefWidth="150.0" />
+            <Label layoutX="14.0" layoutY="12.0" prefHeight="18.0" prefWidth="78.0" text="Choise table" />
+            <TextField fx:id="textArea" layoutX="759.0" layoutY="9.0" />
+            <Label layoutX="591.0" layoutY="12.0" prefHeight="18.0" prefWidth="150.0" />
+            <Label fx:id="labelToShow" layoutX="598.0" layoutY="12.0" prefHeight="18.0" prefWidth="150.0" />
+            <TableView fx:id="table" layoutX="16.0" layoutY="41.0" prefHeight="610.0" prefWidth="917.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="412.0" layoutY="-1.0" prefHeight="26.0" prefWidth="286.0" text="Tables">
+         <font>
+            <Font name="Calibri Italic" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
